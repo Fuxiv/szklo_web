@@ -1,0 +1,147 @@
+export const pl = {
+  startApp: {
+    logo: 'Logo',
+    logIn: 'Logowanie',
+    register: 'Rejestracja',
+    quest: 'Kontynuuj jako gość',
+    nameCompany:'alcedo.ai'
+  },
+  login:{
+    sign_in: "Zaloguj się",
+    login:'Logowanie',
+    email:'E-mail',
+    password:'Hasło',
+    forgetPassword:'Zapomniałem hasła',
+    next:'Dalej',
+    notAccount:'Nie masz konta? ',
+    toRegister:'Zarejestruj się',
+    validPassword:'Hasło musi zawierać co najmniej 6 znaków',
+    wrongEmail:'Błędnie wprowadzony adres email'
+  },
+  register:{
+    register:'Rejestracja',
+    sign_up:'Rejestracja',
+    haveAccount:'Masz już konto? ',
+    toLogin:'Zaloguj się',
+    verifyMailInfo:
+    "By dokończyć rejestrację, proszę potwierdzić rejestrację poprzez link, który został wysłany w wiadomości email",
+    notEmailVerify:'Nie otrzymałeś wiadomości email? Wyślij ponownie',
+    badEmail:'Niepoprawny adres email'
+  },
+  guest:{
+    writeMessage:'Napisz wiadomość',
+    userName:'Imie i nazwisko',
+    email:'Email',
+    message:'Twoja wiadomość',
+    send:'Wyślij',
+    infoHeader:'Platea non habitant',
+    description:'Lorem ipsum dolor sit amet consectetur. Ut tincidunt sit fermentum in vel bibendum. Placerat mus lorem nec imperdiet ut non tempor. Tempor tincidunt erat adipiscing ac lorem donec. Vitae lectus scelerisque nunc tincidunt lorem arcu quam sagittis. Id ut ornare nisl scelerisque vitae interdum fermentum. Risus molestie urna elit libero risus ornare amet egestas curabitur. Vitae vel volutpat erat nec nibh. Quis tincidunt egestas praesent nec a nisl suscipit quam. Accumsan neque porta mauris rhoncus ut.',
+    title1:'Risus molestie',
+    title2:'Vitae volutpat',
+    title3:'Quis tincidunt',
+    text:'Risus molestie urna elit libero risus ornare amet egestas curabitur. Vitae vel volutpat erat nec nibh. Quis tincidunt egestas praesent nec a nisl suscipit quam. ',
+    sendSucces:'Wiadomość została wysłana',
+    validForm:'Wypełnij wszyskite pola aby przesłać wiadomość'
+  },
+  error:{
+    existEmail:"Użytkownik o podanym adresie email już istnieje"
+  },
+  verifi:{
+    header:'Weryfikacja',
+    description:'Udało się zweryfikować twój profil',
+    login:'Zaloguj się',
+    notVerifi:'Nie udało się zweryfikować',
+    send:'Wyślij',
+    info:'Link weryfikacyjny został przesłany na adres email'
+  },
+  navbar:{
+    logout:'Wyloguj',
+    profile:'Profil',
+    messages:'Wiadomości',
+    state:'Stan rozliczeń'
+  },
+  info:{
+    timeOpen:'Godziny otwarcia',
+    time:'7:00 - 16:00',
+    contact:'Kontakt',
+    number:'123 456 789',
+    mail:'Email',
+    adressemail:'mail@mail.com'
+  },
+  remindPassword:{
+    newPassword:'Nowe hasło',
+    repeatPassword:'Powtórz hasło',
+    remindPassword:'Przypomnij hasło',
+    writeEmail:'Wprowadź email podany podczas rejestracji',
+    reset:'Resetuj hasło',
+    notAccount:'Nie masz konta?',
+    toRegister:'Zarejestruj się',
+    writeNewPassword:'Wprowadź nowe hasło',
+    verifyMailInfo:
+    "By dokończyć zmianę hasła, proszę otworzyć link przesłany na adres email",
+  },
+  profile:{
+    profil:'Profil',
+    name:'Imię',
+    lastname:'Nazwisko',
+    email:'E-mail',
+    phoneNumber:'Telefon',
+    password:'Hasło',
+    changePassword:'Zmień hasło',
+    fv:'Faktura',
+    privatePerson:'Osoba prywatna',
+    company:'Firma',
+    street:'Ulica',
+    postalCode:'Kod pocztowy',
+    city:'Miasto',
+    save:'Zapisz',
+    deleteAccount:'Usuń konto',
+    companyName:'Nazwa firmy',
+    nip:'NIP',
+    changePasswordtitle:'Zmiana hasła',
+    oldPassword:'Stare hasło',
+    newPassword:'Nowe hasło',
+    repeatPassword:'Powtórz hasło',
+    succesChangePassword:'Hasło zostało zmienione, wylogowanie nastąpi za 5 sekund. Zaloguj się ponownie za pomoca nowego hasła.',
+    seucesEditProfil:'Zapisano zmiany',
+    dataCompany:'Dane firmy',
+    addressCompany:'Adres firmy',
+    mailCompany:'Mail firmowy',
+    limits:'Limity i ograniczenia', 
+    minSize:'Minimalny adres formatki',
+    minSizeGlass:'Minimalna grubość szkła',
+    delivery:'Dostawy',
+    methodDelivery:'Sposób dostawy',
+    addressDelivery:'Adres dostawy'
+  },
+  orders:{
+    orders:'Zamówienia',
+    orderRegister:'Rejestr zamówień',
+    racks:"Stojaki",
+    nameCompany:'Stan-Szkło',
+    orederNumber:'Numer zamówienia',
+    type:"Typ",
+    stateOrder:"Stan zamówienia",
+    dateRegister:"Data rejestracji",
+    numberContractor:"Numer zamówienia kontrachenta",
+    dateDelivery:"Termin dostawy",
+    delivery:"Sposób dostawy",
+    comments:"Uwagi",
+    adressDelivery:"Adres dostawy",
+    contact:"Kontakt",
+    dateProduction:'Dane produkcyjne',
+    shortNumberOrder:"Skrót numeru zamówienia",
+    symbolLabel:'Symbol etykiety',
+    template:'Szablon opisu ramek',
+    commentsForProduction:'Uwagi dla lini produkcyjnej',
+    longDescription:'Opis'
+  },
+  buttons:{
+    save:"Zapisz",
+    export:"Pobierz",
+    print:"Drukuj",
+    order:"Zamów",
+    close:"Zamknij",
+    back:"Wróć do rejestru zamówień"
+  }
+};

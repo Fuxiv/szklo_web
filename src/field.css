@@ -1,0 +1,118 @@
+.authCard{
+  max-height: 600px;
+  height: 560px;
+  width: 350px;
+  /* max-width: 340px; */
+  background: linear-gradient(
+    180deg,
+    rgba(78, 119, 224, 0.5) 0%,
+    rgba(94, 204, 255, 0.5) 33.65%,
+    rgba(94, 192, 255, 0.5) 65.42%,
+    rgba(86, 110, 231, 0.5) 100%
+  );
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 25px;
+  backdrop-filter: blur(12px);
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.authCartFilter{
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(12px) opacity(0.2);
+  border-radius: 25px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(115, 35, 153, 0.1) 33.65%,
+    rgba(30, 30, 30, 0.1) 65.42%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+
+
+
+.gridCart{
+  min-height: 100%;
+  max-width: 100%;
+  /* background-color: rgba(111, 185, 245, 0.7); */
+  background: linear-gradient(
+    180deg,
+    rgba(78, 119, 224, 0.8) 0%,
+    rgba(94, 204, 255, 0.7) 33.65%,
+    rgba(94, 192, 255, 0.7) 65.42%,
+    rgba(86, 110, 231, 0.8) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* backdrop-filter: blur(12px); */
+  padding-top: 60px;
+}
+
+.gridCartFilter{
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+  /* backdrop-filter: blur(12px) opacity(0); */
+  /* border-radius: 25px; */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(115, 35, 153, 0.2) 33.65%,
+    rgba(30, 30, 30, 0.2) 65.42%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  
+  /* padding-top: 20px; */
+  /* padding-bottom: 32px; */
+}
+
+.verifiCart{
+  max-height: 600px;
+  height: 360px;
+  width: 350px;
+  /* max-width: 340px; */
+  background: linear-gradient(
+    180deg,
+    rgba(78, 119, 224, 0.5) 0%,
+    rgba(94, 204, 255, 0.5) 33.65%,
+    rgba(94, 192, 255, 0.5) 65.42%,
+    rgba(86, 110, 231, 0.5) 100%
+  );
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 25px;
+  backdrop-filter: blur(12px);
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.verifiCartFilter{
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(12px) opacity(0.2);
+  border-radius: 25px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(115, 35, 153, 0.1) 33.65%,
+    rgba(30, 30, 30, 0.1) 65.42%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  padding-right: 25px;
+  padding-left: 25px;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+}
+
