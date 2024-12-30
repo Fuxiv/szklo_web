@@ -11,6 +11,7 @@ import { Item } from "devextreme-react/box";
 import React, { useCallback } from "react";
 import { getString } from "../../../locales/string";
 import NumberBox from "devextreme-react/number-box";
+import ThreeTest from "./ThreeTest";
 
 interface PopupEditProps {
   visible: boolean;
@@ -514,6 +515,8 @@ export const PopupEdit = ({
         onChange={onChangeTpIdent}
         width={"64.3%"}
       />
+
+      <ThreeTest height={tpH} width={tpW} />
 
       <div style={{ position: "absolute", bottom: 20, left: 20 }}>
         <Button

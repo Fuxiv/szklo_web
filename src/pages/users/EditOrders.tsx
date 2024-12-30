@@ -38,7 +38,9 @@ import {
   renderTitleHeaderDetails,
 } from "./components/CustomText";
 import { ParametrsArea } from "./components/ParametrsArea";
-import ValidationGroup from 'devextreme-react/validation-group';
+import { glassPane } from "./components/ThreeTest";
+
+export var testv:any;
 
 export const EditOrders = (props: any) => {
   const { state } = useLocation();
@@ -752,7 +754,13 @@ const saveEmptyOrderFromAttachment=(e:any)=>{
           onChangeTpSymbol={(v: any) => setTpSymbol(v.value)}
           onChangeTpTQnt={(v: any) => setTpTQnt(v.value)}
           onChangeTpType={(v: any) => setTpType(v.value)}
-          onChangeTpW={(v: any) => setTpW(v.value)}
+          onChangeTpW={(v: any) => {
+            setTpW(v.value); 
+            testv = v.value;
+            if(glassPane){
+              console.log(tpW);
+            };
+          }}
           onChangeTpMuntins={(v: any) => setTpMuntins(v.value)}
           onChangeTpWeight={(v: any) => setTpWeight(v.value)}
           onValueChangedType={(v: any) => setTpType(v.value)}

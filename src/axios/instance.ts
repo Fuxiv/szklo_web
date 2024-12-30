@@ -3,7 +3,7 @@ import { store } from "../business/reducer/store";
 
 
 // export const BASE_URL = "http://46.41.136.25:3000/api/" 
-export const BASE_URL = "http://188.123.215.22:8082/" 
+export const BASE_URL = "https://188.123.215.22/" 
 
 // main instace - use request, error interceptor
 export const instance = axios.create({
