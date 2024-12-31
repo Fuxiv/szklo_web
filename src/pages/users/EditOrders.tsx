@@ -399,7 +399,7 @@ const saveEmptyOrderFromAttachment=(e:any)=>{
 
   const handleClickDownload = async () => {
     await axios
-      .get(`http://188.123.215.22:8082/order/download?DC_ID=${dcId}`, {
+      .get(`${BASE_URL}order/download?DC_ID=${dcId}&format=json`, {
         responseType: "blob",
         // timeout: 50000,
         headers: {
@@ -433,7 +433,44 @@ const saveEmptyOrderFromAttachment=(e:any)=>{
           console.error("MessageFile::handleClick:", e);
         }
       });
-  };
+  }
+    const handleClickDownloadPdf = async () => {
+    await axios
+      .get(`${BASE_URL}order/download?DC_ID=${dcId}&format=pdf`, {
+        responseType: "blob",
+        // timeout: 50000,
+        headers: {
+          //@ts-ignore
+          Authorization: "Bearer " + JSON.parse(token),
+          "Access-Control-Allow-Headers":
+            "Access-Control-Allow-Headers, Origin,Accept,Content-Disposition, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",
+          // "Access-Control-Allow-Credentials": true,
+          // "Access-Control-Allow-Origin": "*",
+          // "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        try {
+          const x = window.URL.createObjectURL(new Blob([res.data]));
+          const a = document.createElement("a");
+          a.style.display = "none";
+          a.href = x;
+          const contentDispositionHeader = 'attachment; filename="Z_115.json"';
+          const match = contentDispositionHeader.match(
+            /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/i
+          );
+          const fileName = match ? match[1].replace(/['"]/g, "") : "unknown";
+          // const fileName = res.headers['content-disposition'][0];
+          a.download = fileName;
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(x);
+          a.remove();
+        } catch (e) {
+          console.error("MessageFile::handleClick:", e);
+        }
+      });
+};
 
   const summaryPosition = useCallback((e: any) => {
     return `Ilość: ${e.value}`;
@@ -744,7 +781,13 @@ const saveEmptyOrderFromAttachment=(e:any)=>{
           onChangeTpId={(v: any) => setTpId(v.value)}
           onChangeTpDcId={(v: any) => setTpDcId(v.value)}
           onChangeTpGQnt={(v: any) => setTpGQnt(v.value)}
-          onChangeTpH={(v: any) => setTpH(v.value)}
+          onChangeTpH={(v: any) => {
+            setTpH(v.value);
+            if(glassPane){
+              glassPane.scale.y = v.value * 0.1;
+              console.log(glassPane);
+            };
+          }}
           onChangeTpIdent={(v: any) => setTpIdent(v.value)}
           onChangeTpName={(v: any) => setTpName(v.value)}
           onChangeTpPos={(v: any) => setTpPos(v.value)}
@@ -758,7 +801,8 @@ const saveEmptyOrderFromAttachment=(e:any)=>{
             setTpW(v.value); 
             testv = v.value;
             if(glassPane){
-              console.log(tpW);
+              glassPane.scale.x = v.value * 0.1;
+              console.log(glassPane);
             };
           }}
           onChangeTpMuntins={(v: any) => setTpMuntins(v.value)}
@@ -816,6 +860,17 @@ const saveEmptyOrderFromAttachment=(e:any)=>{
                     borderColor: "#3481DD",
                   }}
                   onClick={handleClickDownload}
+                />
+              ) : null}
+              {dateDelivery ? (
+                <ButtonEdit
+                  text={getString("buttons", "exportPdf")}
+                  style={{
+                    marginLeft: 20,
+                    backgroundColor: "#3481DD",
+                    borderColor: "#3481DD",
+                  }}
+                  onClick={handleClickDownloadPdf}
                 />
               ) : null}
               <ButtonEdit

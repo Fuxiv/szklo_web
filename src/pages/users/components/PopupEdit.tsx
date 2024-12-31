@@ -516,7 +516,7 @@ export const PopupEdit = ({
         width={"64.3%"}
       />
 
-      <ThreeTest height={tpH} width={tpW} />
+      <ThreeTest />
 
       <div style={{ position: "absolute", bottom: 20, left: 20 }}>
         <Button

@@ -1,17 +1,19 @@
 //@ts-ignore
 import * as THREE from "three";
 //@ts-ignore
-import * as dat from "dat.gui";
+import { Reflector } from "three/addons/objects/Reflector.js";
+//@ts-ignore
+import { Refractor } from "three/addons/objects/Refractor.js";
 //@ts-ignore
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { useEffect, useRef, useState } from "react";
-import { testv } from "../EditOrders";
+//@ts-ignore
+import { WaterRefractionShader } from "three/addons/shaders/WaterRefractionShader.js";
+import { useEffect, useRef } from "react";
 // e.row.data.TP_W
 export var glassPane: any;
-function ThreeTest({ height, width }: { height: number; width: number }) {
+function ThreeTest() {
   const refContainer = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    console.log(height, width);
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -20,7 +22,7 @@ function ThreeTest({ height, width }: { height: number; width: number }) {
       1000,
     );
     camera.position.z = 5;
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(800, 450);
     document.body.appendChild(renderer.domElement);
     const loader = new THREE.CubeTextureLoader();
@@ -33,12 +35,33 @@ function ThreeTest({ height, width }: { height: number; width: number }) {
       "https://via.placeholder.com/512/ccd3ff/000000?text=Back", // nz
     ]);
     scene.background = gradientTexture;
+    //    const mirrorGeometry = new THREE.PlaneGeometry(3, 3);
+    //    const mirror = new Reflector(mirrorGeometry, {
+    //      clipBias: 0.003,
+    //      textureWidth: window.innerWidth * window.devicePixelRatio,
+    //      textureHeight: window.innerHeight * window.devicePixelRatio,
+    //      color: 0x777777,
+    //      opacity: 0.1
+    //    });
+    //    mirror.position.set(0, -0.5, 0); // Slightly below the glass pane
+    //    scene.add(mirror);
 
+//    const refractorGeometry = new THREE.PlaneGeometry(90, 90);
+//
+//    const refractor = new Refractor(refractorGeometry, {
+//      color: 0xcbcbcb,
+//      textureWidth: 1024,
+//      textureHeight: 1024,
+//      shader: WaterRefractionShader,
+//    });
+//    refractor.position.z = 1;
+//    //brakuje mu jeszcze tekstury
+//    scene.add(refractor);
     // Glass pane geometry and material
-    const geometry = new THREE.BoxGeometry(height*0.1, width*0.1, 0.1);
+    const geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
     const material = new THREE.MeshPhysicalMaterial({
       color: 0x88ccee,
-      opacity: 0.5,
+      opacity: 1,
       transparent: true,
       roughness: 0.1,
       metalness: 0.5,
@@ -47,9 +70,20 @@ function ThreeTest({ height, width }: { height: number; width: number }) {
       clearcoatRoughness: 0.1,
     });
     glassPane = new THREE.Mesh(geometry, material);
+    glassPane.position.z = -1;
     scene.add(glassPane);
+
+//    const geometry1 = new THREE.BoxGeometry(1, 1, 1);
+//    const material1 = new THREE.MeshPhongMaterial({
+//      color: 0x00ff00,
+//      refractionRatio: 0.99,
+//    });
+//    const cube = new THREE.Mesh(geometry1, material1);
+//    cube.position.z = 5;
+//    scene.add(cube);
+
     // Lights
-    const light1 = new THREE.PointLight(0xffffff, 1, 100);
+    const light1 = new THREE.PointLight(0xffffff, 100, 0);
     light1.position.set(5, 5, 5);
     scene.add(light1);
 
@@ -57,29 +91,29 @@ function ThreeTest({ height, width }: { height: number; width: number }) {
     scene.add(light2);
     refContainer.current &&
       refContainer.current.appendChild(renderer.domElement);
-    // Controls
-    const controls = {
-      width: 1,
-      height: 1,
-      depth: 0.1,
-      cornerRadius: 0,
-      updateGeometry: function () {
-        const roundedGeometry = new THREE.BoxGeometry(
-          controls.width,
-          controls.height,
-          controls.depth,
-        );
-        glassPane.geometry.dispose();
-        glassPane.geometry = roundedGeometry;
-      },
-    };
-
-    const gui = new dat.GUI();
-    gui.add(controls, "width", 0.5, 3, 0.1).onChange(controls.updateGeometry);
-    gui.add(controls, "height", 0.5, 3, 0.1).onChange(controls.updateGeometry);
-    gui
-      .add(controls, "depth", 0.01, 0.5, 0.01)
-      .onChange(controls.updateGeometry);
+    //    Controls
+    //    const controls = {
+    //      width: 1,
+    //      height: 1,
+    //      depth: 0.1,
+    //      cornerRadius: 0,
+    //      updateGeometry: function () {
+    //        const roundedGeometry = new THREE.BoxGeometry(
+    //          controls.width,
+    //          controls.height,
+    //          controls.depth,
+    //        );
+    //        glassPane.geometry.dispose();
+    //        glassPane.geometry = roundedGeometry;
+    //      },
+    //    };
+    //
+    //    const gui = new dat.GUI();
+    //    gui.add(controls, "width", 0.5, 3, 0.1).onChange(controls.updateGeometry);
+    //    gui.add(controls, "height", 0.5, 3, 0.1).onChange(controls.updateGeometry);
+    //    gui
+    //      .add(controls, "depth", 0.01, 0.5, 0.01)
+    //      .onChange(controls.updateGeometry);
     const orbitControls = new OrbitControls(camera, renderer.domElement);
     function animate() {
       requestAnimationFrame(animate);

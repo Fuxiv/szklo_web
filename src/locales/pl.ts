@@ -139,6 +139,7 @@ export const pl = {
   buttons:{
     save:"Zapisz",
     export:"Pobierz",
+    exportPdf: "Pobierz do PDF",
     print:"Drukuj",
     order:"Zamów",
     close:"Zamknij",
