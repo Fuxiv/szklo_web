@@ -7,10 +7,16 @@ import { Refractor } from "three/addons/objects/Refractor.js";
 //@ts-ignore
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 //@ts-ignore
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+//@ts-ignore
 import { WaterRefractionShader } from "three/addons/shaders/WaterRefractionShader.js";
 import { useEffect, useRef } from "react";
 // e.row.data.TP_W
 export var glassPane: any;
+export var ramkaP: any;
+export var ramkaD: any;
+export var ramkaL: any;
+export var ramkaG: any;
 function ThreeTest() {
   const refContainer = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -46,22 +52,22 @@ function ThreeTest() {
     //    mirror.position.set(0, -0.5, 0); // Slightly below the glass pane
     //    scene.add(mirror);
 
-//    const refractorGeometry = new THREE.PlaneGeometry(90, 90);
-//
-//    const refractor = new Refractor(refractorGeometry, {
-//      color: 0xcbcbcb,
-//      textureWidth: 1024,
-//      textureHeight: 1024,
-//      shader: WaterRefractionShader,
-//    });
-//    refractor.position.z = 1;
-//    //brakuje mu jeszcze tekstury
-//    scene.add(refractor);
+    //    const refractorGeometry = new THREE.PlaneGeometry(90, 90);
+    //
+    //    const refractor = new Refractor(refractorGeometry, {
+    //      color: 0xcbcbcb,
+    //      textureWidth: 1024,
+    //      textureHeight: 1024,
+    //      shader: WaterRefractionShader,
+    //    });
+    //    refractor.position.z = 1;
+    //    //brakuje mu jeszcze tekstury
+    //    scene.add(refractor);
     // Glass pane geometry and material
     const geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
     const material = new THREE.MeshPhysicalMaterial({
-      color: 0x88ccee,
-      opacity: 1,
+      color: 0xE4FFF0,
+      opacity: 0.2,
       transparent: true,
       roughness: 0.1,
       metalness: 0.5,
@@ -70,18 +76,39 @@ function ThreeTest() {
       clearcoatRoughness: 0.1,
     });
     glassPane = new THREE.Mesh(geometry, material);
-    glassPane.position.z = -1;
     scene.add(glassPane);
 
-//    const geometry1 = new THREE.BoxGeometry(1, 1, 1);
-//    const material1 = new THREE.MeshPhongMaterial({
-//      color: 0x00ff00,
-//      refractionRatio: 0.99,
-//    });
-//    const cube = new THREE.Mesh(geometry1, material1);
-//    cube.position.z = 5;
-//    scene.add(cube);
+    let ramkaGeometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+    let ramkaMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0xa0a0a0
+    })
+    ramkaP = new THREE.Mesh(ramkaGeometry, ramkaMaterial);
+    ramkaP.scale.z = 3;
+    scene.add(ramkaP);
 
+    ramkaGeometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+    ramkaMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0xa0a0a0
+    })
+    ramkaD = new THREE.Mesh(ramkaGeometry, ramkaMaterial);
+    ramkaD.scale.z = 3;
+    scene.add(ramkaD);
+
+    ramkaGeometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+    ramkaMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0xa0a0a0
+    })
+    ramkaL = new THREE.Mesh(ramkaGeometry, ramkaMaterial);
+    ramkaL.scale.z = 3;
+    scene.add(ramkaL);
+
+    ramkaGeometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+    ramkaMaterial = new THREE.MeshPhysicalMaterial({
+      color: 0xa0a0a0
+    })
+    ramkaG = new THREE.Mesh(ramkaGeometry, ramkaMaterial);
+    ramkaG.scale.z = 3;
+    scene.add(ramkaG);
     // Lights
     const light1 = new THREE.PointLight(0xffffff, 100, 0);
     light1.position.set(5, 5, 5);

@@ -1,3 +1,5 @@
+//@ts-ignore
+import * as THREE from "three";
 import { createStore } from "devextreme-aspnet-data-nojquery";
 import { DataGrid, Toast } from "devextreme-react";
 import {
@@ -38,7 +40,7 @@ import {
   renderTitleHeaderDetails,
 } from "./components/CustomText";
 import { ParametrsArea } from "./components/ParametrsArea";
-import { glassPane } from "./components/ThreeTest";
+import { glassPane, ramkaD, ramkaG, ramkaL, ramkaP } from "./components/ThreeTest";
 
 export var testv:any;
 
@@ -785,6 +787,10 @@ const saveEmptyOrderFromAttachment=(e:any)=>{
             setTpH(v.value);
             if(glassPane){
               glassPane.scale.y = v.value * 0.1;
+              ramkaP.scale.y = v.value * 0.1;
+              ramkaL.scale.y = v.value * 0.1;
+              ramkaG.position.y = v.value * 0.01 / 2;
+              ramkaD.position.y = v.value * -0.01 / 2;
               console.log(glassPane);
             };
           }}
@@ -794,15 +800,40 @@ const saveEmptyOrderFromAttachment=(e:any)=>{
           onChangeTpQnt={(v: any) => setTpQnt(v.value)}
           onChangeTpRQnt={(v: any) => setTpRQnt(v.value)}
           onChangeTpShape={(v: any) => setTpShape(v.value)}
-          onChangeTpSymbol={(v: any) => setTpSymbol(v.value)}
+          onChangeTpSymbol={(v: any) => {
+            setTpSymbol(v.value)
+            let symbolSplit = null;
+            try {
+              symbolSplit = v.value.split('/');
+            } catch (error) {
+              console.log(error) ;
+            }
+            if (symbolSplit) {
+              if (symbolSplit.length % 2 !== 0 && symbolSplit.length > 1 && symbolSplit.length < 10) {
+              console.log(symbolSplit)
+                if (v.value.match(/^(\d{1,2})(?:\/(\d{1,2})\/\1)*(?:\/\2\/\1)?$/)) {
+                  //dodac do sceny nowe szyby zeby sie zgadzalo
+                  console.log(Math.round(symbolSplit.length / 2))
+                }
+              }
+            }
+          }}
           onChangeTpTQnt={(v: any) => setTpTQnt(v.value)}
           onChangeTpType={(v: any) => setTpType(v.value)}
           onChangeTpW={(v: any) => {
             setTpW(v.value); 
             testv = v.value;
             if(glassPane){
+//              glassPane.geometry.dispose();
+//              glassPane.geometry = new THREE.BoxGeometry(v.value, tpH, 1);
               glassPane.scale.x = v.value * 0.1;
+              ramkaP.position.x = (v.value * 0.01) / 2;
+              ramkaL.position.x = (v.value * -0.01) / 2;
+              ramkaG.scale.x = v.value * 0.1;
+              ramkaD.scale.x = v.value * 0.1;
               console.log(glassPane);
+              console.log("aa");
+              console.log(ramkaP);
             };
           }}
           onChangeTpMuntins={(v: any) => setTpMuntins(v.value)}

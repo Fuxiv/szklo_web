@@ -62,7 +62,7 @@ function App() {
                 path="/user/profil/newPassword"
                 element={<ChangePasswordScreen />}
               />
-            </Route>
+                 </Route>
             <Route path="/" element={<IndexScreen />} />
             <Route path="/signIn" element={<LoginScreen />} />
             <Route path="/signUp" element={<RegisterScreen />} />
